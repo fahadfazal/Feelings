@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Propose to Rimsha</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d6336c;
+    }
+
+    .proposal {
+      position: absolute;
+      left: 50%;
+      bottom: 20%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      display: none;
+      animation: showProposal 4s ease-out forwards;
+    }
+
+    @keyframes showProposal {
+      0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    button {
+      background-color: #ff6f91;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Will You Marry Me, Rimsha? 💍</h1>
+  <div id="proposal" class="proposal">
+    <p>💍 Will you marry me, Rimsha? 🌹</p>
+  </div>
+  <button onclick="showProposal()">Propose to Rimsha</button>
+  <button onclick="window.location.href='index.html'">Back to Home</button>
+
+  <script>
+    function showProposal() {
+      const proposalElement = document.getElementById("proposal");
+      proposalElement.style.display = "block";
+    }
+  </script>
+</body>
+</html>
