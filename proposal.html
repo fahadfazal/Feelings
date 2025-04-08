@@ -110,9 +110,9 @@
 
     /* Proposal Text Animation */
     .proposal-text {
-      font-size: 2em;
+      font-size: 2.5em;
       font-weight: bold;
-      color: #ff6f91;
+      color: #FFD700; /* Changed the color to Gold */
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
       margin-top: 40px;
       opacity: 0;
@@ -130,15 +130,27 @@
       }
     }
 
-    /* Animation for fade-in effect */
-    @keyframes fadeIn {
+    /* Ring and Rose Animation */
+    .rose, .ring {
+      position: absolute;
+      font-size: 2rem;
+      animation: sendRoseAndRing 3s ease-out forwards;
+    }
+
+    @keyframes sendRoseAndRing {
       0% {
+        bottom: 0;
         opacity: 0;
-        transform: translateY(50px);
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
       }
       100% {
-        opacity: 1;
-        transform: translateY(0);
+        bottom: 80vh;
+        opacity: 0;
+        transform: scale(1);
       }
     }
 
@@ -177,6 +189,33 @@
       heart.style.fontSize = 1 + Math.random() * 2 + "rem";
       document.body.appendChild(heart);
     }
+
+    // Send Rose and Ring Animation
+    function sendRoseAndRing() {
+      // Rose Animation
+      const rose = document.createElement("div");
+      rose.classList.add("rose");
+      rose.textContent = "🌹";
+      rose.style.left = Math.random() * 90 + "vw";
+      document.body.appendChild(rose);
+
+      // Ring Animation
+      const ring = document.createElement("div");
+      ring.classList.add("ring");
+      ring.textContent = "💍";
+      ring.style.left = Math.random() * 90 + "vw";
+      document.body.appendChild(ring);
+
+      setTimeout(() => {
+        rose.remove();
+        ring.remove();
+      }, 3000);
+    }
+
+    // Triggering the animation of sending the rose and ring when the page loads
+    window.onload = function() {
+      sendRoseAndRing();
+    };
   </script>
 </body>
 </html>
