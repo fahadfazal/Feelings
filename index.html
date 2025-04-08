@@ -12,7 +12,9 @@
       background: linear-gradient(to right, #ffd1dc, #ffe4e1);
       color: #333;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto; /* Enable vertical scrolling */
+      height: 100%;
+      scroll-behavior: smooth; /* Enable smooth scrolling */
     }
 
     h1 {
@@ -172,308 +174,51 @@
         text-shadow: 0 0 20px gold, 0 0 30px gold;
       }
     }
-  </style>
-</head>
-<body>
-  <h1>I Love You, Rimsha ❤️</h1>
-  <p>To my dearest Rimsha, you are my heart, my soul, my everything.</p>
 
-  <div class="languages">
-    <div class="lang">English: I love you</div>
-    <div class="lang">French: Je t’aime</div>
-    <div class="lang">Spanish: Te amo</div>
-    <div class="lang">German: Ich liebe dich</div>
-    <div class="lang">Japanese: 愛してる (Aishiteru)</div>
-    <div class="lang">Hindi: मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon)</div>
-    <div class="lang">Arabic: أحبك (Uhibbuki)</div>
-    <div class="lang">Italian: Ti amo</div>
-    <div class="lang">Korean: 사랑해 (Saranghae)</div>
-    <div class="lang">Urdu: میں تم سے محبت کرتا ہوں (Main tum se mohabbat karta hoon)</div>
-  </div>
-
-  <div class="tabs">
-    <div class="tab">🌹 A rose for your smile</div>
-    <div class="tab">🌸 A blossom for your kindness</div>
-    <div class="tab">🌼 A daisy for your joy</div>
-    <div class="tab">🌷 A tulip for your warmth</div>
-    <div class="tab">💐 A bouquet for your heart</div>
-    <div class="tab">💋 A kiss for your forever</div>
-  </div>
-
-  <button onclick="showProposal()">💍 Propose to Rimsha</button>
-
-  <div id="proposal" class="proposal">
-    <p>💍 Will you marry me, Rimsha? 🌹</p>
-    <div class="crown">👑</div>
-  </div>
-
-  <button onclick="showLoveNote()">💌 Show Me a Love Note</button>
-  <p id="loveNote"></p>
-
-  <button onclick="sendRoses()">🌹 Send Roses & Propose</button>
-
-  <script>
-    const notes = [
-      "Rimsha, you light up my world like nobody else.",
-      "Every day with you is a gift I cherish.",
-      "Your love makes me a better man.",
-      "You are my favorite hello and my hardest goodbye.",
-      "I still fall for you every single day, Rimsha.",
-      "You’re my today, tomorrow, and forever.",
-      "With you, love feels effortless and endless.",
-    ];
-
-    function showLoveNote() {
-      const note = notes[Math.floor(Math.random() * notes.length)];
-      document.getElementById("loveNote").textContent = note;
-    }
-
-    function sendRoses() {
-      for (let i = 0; i < 10; i++) {
-        const rose = document.createElement("div");
-        rose.classList.add("rose");
-        rose.textContent = "🌹";
-        rose.style.left = Math.random() * 90 + "vw";
-        rose.style.bottom = "0";
-        document.body.appendChild(rose);
-
-        setTimeout(() => {
-          rose.remove();
-        }, 3000);
-      }
-    }
-
-    function showProposal() {
-      const proposalElement = document.getElementById("proposal");
-      proposalElement.style.display = "block"; // Make the proposal visible
-    }
-
-    // Floating hearts
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.textContent = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-      heart.style.fontSize = 1 + Math.random() * 2 + "rem";
-      document.body.appendChild(heart);
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I Love You, Rimsha 💖</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
-      color: #333;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    h1 {
-      margin-top: 50px;
-      font-size: 3em;
-      color: #d6336c;
-    }
-
-    p {
-      font-size: 1.5em;
-    }
-
-    .languages {
-      margin: 40px auto;
-      max-width: 600px;
-    }
-
-    .lang {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
-
-    #loveNote {
-      font-style: italic;
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-
-    button {
-      background-color: #ff6f91;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1em;
-      color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 30px;
-    }
-
-    button:hover {
-      background-color: #ff4d6d;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 40px;
-    }
-
-    .tab {
-      background: #fff0f5;
-      border: 2px solid #ff6f91;
-      border-radius: 15px;
-      padding: 15px 25px;
-      font-size: 1.2em;
-      color: #d6336c;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .tab:hover {
-      background: #ffe6ec;
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      color: #ff6b81;
-      font-size: 2rem;
-      animation: float 10s infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Rose animation */
-    .rose {
-      position: absolute;
-      font-size: 2rem;
-      animation: sendRose 3s ease-out forwards;
-    }
-
-    @keyframes sendRose {
-      0% {
-        bottom: 0;
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-      100% {
-        bottom: 80vh;
-        opacity: 0;
-        transform: scale(1);
-      }
-    }
-
-    /* Proposal animation */
-    .proposal {
-      position: absolute;
-      left: 50%;
-      bottom: 20%;
-      transform: translateX(-50%);
-      font-size: 3rem;
-      display: none;
-      animation: showProposal 4s ease-out forwards;
-    }
-
-    @keyframes showProposal {
-      0% {
-        opacity: 0;
-        transform: translateY(50px) scale(0.5);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .crown {
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 3rem;
-      color: gold;
-      animation: crownGlow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes crownGlow {
-      0% {
-        color: gold;
-        text-shadow: 0 0 10px gold, 0 0 20px gold;
-      }
-      100% {
-        color: #ffd700;
-        text-shadow: 0 0 20px gold, 0 0 30px gold;
-      }
+    .content {
+      padding-bottom: 50px; /* Adding extra space for the content to be scrollable */
     }
   </style>
 </head>
 <body>
-  <h1>I Love You, Rimsha ❤️</h1>
-  <p>To my dearest Rimsha, you are my heart, my soul, my everything.</p>
+  <div class="content">
+    <h1>I Love You, Rimsha ❤️</h1>
+    <p>To my dearest Rimsha, you are my heart, my soul, my everything.</p>
 
-  <div class="languages">
-    <div class="lang">English: I love you</div>
-    <div class="lang">French: Je t’aime</div>
-    <div class="lang">Spanish: Te amo</div>
-    <div class="lang">German: Ich liebe dich</div>
-    <div class="lang">Japanese: 愛してる (Aishiteru)</div>
-    <div class="lang">Hindi: मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon)</div>
-    <div class="lang">Arabic: أحبك (Uhibbuki)</div>
-    <div class="lang">Italian: Ti amo</div>
-    <div class="lang">Korean: 사랑해 (Saranghae)</div>
-    <div class="lang">Urdu: میں تم سے محبت کرتا ہوں (Main tum se mohabbat karta hoon)</div>
+    <div class="languages">
+      <div class="lang">English: I love you</div>
+      <div class="lang">French: Je t’aime</div>
+      <div class="lang">Spanish: Te amo</div>
+      <div class="lang">German: Ich liebe dich</div>
+      <div class="lang">Japanese: 愛してる (Aishiteru)</div>
+      <div class="lang">Hindi: मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon)</div>
+      <div class="lang">Arabic: أحبك (Uhibbuki)</div>
+      <div class="lang">Italian: Ti amo</div>
+      <div class="lang">Korean: 사랑해 (Saranghae)</div>
+      <div class="lang">Urdu: میں تم سے محبت کرتا ہوں (Main tum se mohabbat karta hoon)</div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab">🌹 A rose for your smile</div>
+      <div class="tab">🌸 A blossom for your kindness</div>
+      <div class="tab">🌼 A daisy for your joy</div>
+      <div class="tab">🌷 A tulip for your warmth</div>
+      <div class="tab">💐 A bouquet for your heart</div>
+      <div class="tab">💋 A kiss for your forever</div>
+    </div>
+
+    <button onclick="showProposal()">💍 Propose to Rimsha</button>
+
+    <div id="proposal" class="proposal">
+      <p>💍 Will you marry me, Rimsha? 🌹</p>
+      <div class="crown">👑</div>
+    </div>
+
+    <button onclick="showLoveNote()">💌 Show Me a Love Note</button>
+    <p id="loveNote"></p>
+
+    <button onclick="sendRoses()">🌹 Send Roses & Propose</button>
   </div>
-
-  <div class="tabs">
-    <div class="tab">🌹 A rose for your smile</div>
-    <div class="tab">🌸 A blossom for your kindness</div>
-    <div class="tab">🌼 A daisy for your joy</div>
-    <div class="tab">🌷 A tulip for your warmth</div>
-    <div class="tab">💐 A bouquet for your heart</div>
-    <div class="tab">💋 A kiss for your forever</div>
-  </div>
-
-  <button onclick="showProposal()">💍 Propose to Rimsha</button>
-
-  <div id="proposal" class="proposal">
-    <p>💍 Will you marry me, Rimsha? 🌹</p>
-    <div class="crown">👑</div>
-  </div>
-
-  <button onclick="showLoveNote()">💌 Show Me a Love Note</button>
-  <p id="loveNote"></p>
-
-  <button onclick="sendRoses()">🌹 Send Roses & Propose</button>
 
   <script>
     const notes = [
