@@ -12,20 +12,13 @@
       background: linear-gradient(to right, #ffd1dc, #ffe4e1);
       color: #333;
       text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     h1 {
       margin-top: 50px;
       font-size: 3em;
       color: #d6336c;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); text-shadow: 0 0 5px #ff8fa3; }
-      50% { transform: scale(1.05); text-shadow: 0 0 15px #ff4d6d; }
-      100% { transform: scale(1); text-shadow: 0 0 5px #ff8fa3; }
     }
 
     p {
@@ -56,84 +49,81 @@
       color: white;
       border-radius: 10px;
       cursor: pointer;
-      margin: 20px 10px;
+      margin-top: 30px;
     }
 
     button:hover {
       background-color: #ff4d6d;
     }
 
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .tab {
+      background: #fff0f5;
+      border: 2px solid #ff6f91;
+      border-radius: 15px;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      color: #d6336c;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .tab:hover {
+      background: #ffe6ec;
+    }
+
+    /* Floating hearts */
     .heart {
       position: absolute;
       color: #ff6b81;
       font-size: 2rem;
-      animation: float 8s infinite ease-in-out;
+      animation: float 10s infinite;
       opacity: 0.6;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(100vh) translateX(0);
+        transform: translateY(100vh) rotate(0deg);
         opacity: 0;
       }
       50% {
         opacity: 1;
-        transform: translateY(50vh) translateX(-20px) rotate(20deg);
       }
       100% {
-        transform: translateY(-100vh) translateX(30px) rotate(360deg);
+        transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
       }
     }
 
-    #audioControl {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #fff0f5;
-      border: 2px solid #ff6f91;
-      color: #d6336c;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.9em;
+    /* Rose animation */
+    .rose {
+      position: absolute;
+      font-size: 2rem;
+      animation: sendRose 3s ease-out forwards;
     }
 
-    /* Love Letter Popup */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      background: #fff0f5;
-      padding: 30px;
-      border: 2px solid #ff6f91;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 105, 135, 0.5);
-      max-width: 90%;
-      width: 400px;
-      z-index: 999;
-      text-align: center;
-      transition: all 0.4s ease-in-out;
-    }
-
-    .popup.show {
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .popup h2 {
-      margin-top: 0;
-      color: #d6336c;
-    }
-
-    .popup p {
-      font-size: 1.1em;
-      line-height: 1.5em;
-    }
-
-    .popup button {
-      margin-top: 20px;
-      background-color: #d6336c;
+    @keyframes sendRose {
+      0% {
+        bottom: 0;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        bottom: 80vh;
+        opacity: 0;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -147,35 +137,31 @@
     <div class="lang">Spanish: Te amo</div>
     <div class="lang">German: Ich liebe dich</div>
     <div class="lang">Japanese: 愛してる (Aishiteru)</div>
-    <div class="lang">Hindi: मैं तुमसे प्यार करता हूँ</div>
+    <div class="lang">Hindi: मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon)</div>
     <div class="lang">Arabic: أحبك (Uhibbuki)</div>
     <div class="lang">Italian: Ti amo</div>
     <div class="lang">Korean: 사랑해 (Saranghae)</div>
-    <div class="lang">Urdu: میں تم سے محبت کرتا ہوں</div>
+    <div class="lang">Urdu: میں تم سے محبت کرتا ہوں (Main tum se mohabbat karta hoon)</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab">🌹 A rose for your smile</div>
+    <div class="tab">🌸 A blossom for your kindness</div>
+    <div class="tab">🌼 A daisy for your joy</div>
+    <div class="tab">🌷 A tulip for your warmth</div>
+    <div class="tab">💐 A bouquet for your heart</div>
+    <div class="tab">💋 A kiss for your forever</div>
   </div>
 
   <button onclick="showLoveNote()">💌 Show Me a Love Note</button>
-  <button onclick="showPopup()">📬 Surprise Message</button>
   <p id="loveNote"></p>
 
-  <!-- Music Control -->
-  <audio id="bgMusic" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  <button onclick="sendRoses()">🌹 Send Roses & Propose</button>
+
+  <audio id="loveSong" controls autoplay loop style="margin-top: 40px;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <div id="audioControl" onclick="toggleMusic()">🔊 Tap to Mute</div>
-
-  <!-- Love Letter Popup -->
-  <div id="lovePopup" class="popup">
-    <h2>My Sweetest Rimsha 💖</h2>
-    <p>
-      You are the most beautiful part of my life.<br>
-      Every day, every moment with you is a blessing I treasure.<br>
-      I fall in love with you more and more with every smile, every word, every hug.<br>
-      Thank you for being my heart, my home, my forever.
-    </p>
-    <button onclick="hidePopup()">Close 💘</button>
-  </div>
 
   <script>
     const notes = [
@@ -193,6 +179,22 @@
       document.getElementById("loveNote").textContent = note;
     }
 
+    function sendRoses() {
+      for (let i = 0; i < 10; i++) {
+        const rose = document.createElement("div");
+        rose.classList.add("rose");
+        rose.textContent = "🌹";
+        rose.style.left = Math.random() * 90 + "vw";
+        rose.style.bottom = "0";
+        document.body.appendChild(rose);
+
+        setTimeout(() => {
+          rose.remove();
+        }, 3000);
+      }
+    }
+
+    // Floating hearts
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -201,33 +203,6 @@
       heart.style.animationDuration = 5 + Math.random() * 5 + "s";
       heart.style.fontSize = 1 + Math.random() * 2 + "rem";
       document.body.appendChild(heart);
-    }
-
-    const audio = document.getElementById("bgMusic");
-    const control = document.getElementById("audioControl");
-
-    window.addEventListener('load', () => {
-      audio.play().catch(() => {
-        control.textContent = "🔇 Tap to Play";
-      });
-    });
-
-    function toggleMusic() {
-      if (audio.paused) {
-        audio.play();
-        control.textContent = "🔊 Tap to Mute";
-      } else {
-        audio.pause();
-        control.textContent = "🔇 Tap to Play";
-      }
-    }
-
-    function showPopup() {
-      document.getElementById("lovePopup").classList.add("show");
-    }
-
-    function hidePopup() {
-      document.getElementById("lovePopup").classList.remove("show");
     }
   </script>
 </body>
