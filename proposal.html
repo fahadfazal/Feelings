@@ -14,9 +14,8 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: url('https://www.example.com/background-image.jpg') no-repeat center center fixed; /* Background image URL */
-      background-size: cover; /* Ensures the background image covers the entire screen */
-      background-attachment: fixed; /* Makes the background fixed during scrolling */
+      /* Removed background image */
+      background-color: #ff6f91; /* A solid color background */
       scroll-behavior: smooth;
     }
 
@@ -43,11 +42,11 @@
       max-width: 600px;
       border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.5s ease-in-out;
+      display: none; /* Hide image initially */
     }
 
-    .proposal-image:hover {
-      transform: scale(1.05);
+    .proposal-image.visible {
+      display: block; /* Show image when visible class is added */
     }
 
     button {
@@ -74,6 +73,28 @@
       transform: scale(0.98);
     }
 
+    .sad-emoji {
+      position: absolute;
+      font-size: 3rem;
+      color: #ff6f91;
+      animation: sadFloat 5s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes sadFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
     .heart {
       position: absolute;
       font-size: 3rem;
@@ -116,161 +137,36 @@
         transform: translateY(0);
       }
     }
-
-    .rose, .ring {
-      position: absolute;
-      font-size: 2rem;
-      animation: sendRoseAndRing 3s ease-out forwards;
-    }
-
-    @keyframes sendRoseAndRing {
-      0% {
-        bottom: 0;
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-      100% {
-        bottom: 80vh;
-        opacity: 0;
-        transform: scale(1);
-      }
-    }
-
-    .flower {
-      position: absolute;
-      font-size: 2rem;
-      animation: sendFlowers 3s ease-out forwards;
-    }
-
-    @keyframes sendFlowers {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-        bottom: 0;
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-      100% {
-        opacity: 0;
-        bottom: 80vh;
-        transform: scale(1);
-      }
-    }
-
-    .sad-emoji {
-      position: absolute;
-      font-size: 3rem;
-      color: #ff6f91;
-      animation: sadFloat 5s infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes sadFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Media Queries for smaller screens */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 6vw;
-      }
-
-      p {
-        font-size: 4vw;
-      }
-
-      button {
-        font-size: 4vw;
-        padding: 12px 24px;
-      }
-
-      .proposal-text {
-        font-size: 5vw;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 8vw;
-      }
-
-      p {
-        font-size: 5vw;
-      }
-
-      button {
-        font-size: 5vw;
-        padding: 10px 20px;
-      }
-
-      .proposal-text {
-        font-size: 6vw;
-      }
-    }
   </style>
 </head>
 <body>
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
-  <img class="proposal-image" src="https://www.example.com/couple-proposal.jpg" alt="Couple Proposal">
-
   <div class="proposal-text">Will You Marry Me, Rimsha?</div>
 
-  <button onclick="showFlowers()">❤️ Yes, I Will Marry You!</button>
+  <!-- Buttons for Yes and No -->
+  <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
+  <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
 
-  <button onclick="showSadEmojis()">😢 No, I'm Sorry!</button>
+  <!-- Hidden proposal image -->
+  <img class="proposal-image" src="https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proposal Image">
 
-  <div id="flowersContainer"></div>
   <div id="sadEmojisContainer"></div>
-
+  
   <script>
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.textContent = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-      heart.style.fontSize = 1 + Math.random() * 2 + "rem";
-      document.body.appendChild(heart);
-    }
-
-    function showFlowers() {
-      for (let i = 0; i < 10; i++) {
-        const flower = document.createElement("div");
-        flower.classList.add("flower");
-        flower.textContent = "💐";
-        flower.style.left = Math.random() * 90 + "vw";
-        document.getElementById("flowersContainer").appendChild(flower);
-
-        setTimeout(() => {
-          flower.remove();
-        }, 3000);
-      }
-
+    // Function to show the proposal image when "Yes" is clicked
+    function showYesResponse() {
+      const proposalImage = document.querySelector('.proposal-image');
+      proposalImage.classList.add('visible'); // Show the image
       window.scrollTo({
-        top: document.body.scrollHeight,
+        top: proposalImage.offsetTop,
         behavior: 'smooth',
       });
     }
 
-    function showSadEmojis() {
+    // Function to show sad emojis when "No" is clicked
+    function showNoResponse() {
       for (let i = 0; i < 10; i++) {
         const sadEmoji = document.createElement("div");
         sadEmoji.classList.add("sad-emoji");
@@ -289,9 +185,16 @@
       });
     }
 
-    window.onload = function() {
-      sendRoseAndRing();
-    };
+    // Floating hearts effect on page load
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      heart.style.fontSize = 1 + Math.random() * 2 + "rem";
+      document.body.appendChild(heart);
+    }
   </script>
 </body>
 </html>
