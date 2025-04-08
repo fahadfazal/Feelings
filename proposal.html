@@ -97,17 +97,6 @@
       }
     }
 
-    /* Floating Hearts Styling */
-    .heart:nth-child(even) {
-      font-size: 3rem;
-      animation-duration: 8s;
-    }
-
-    .heart:nth-child(odd) {
-      font-size: 2.5rem;
-      animation-duration: 12s;
-    }
-
     /* Proposal Text Animation */
     .proposal-text {
       font-size: 2.5em;
@@ -154,6 +143,29 @@
       }
     }
 
+    /* Flower Animation for "Yes" */
+    .flower {
+      position: absolute;
+      font-size: 2rem;
+      animation: sendFlowers 3s ease-out forwards;
+    }
+
+    @keyframes sendFlowers {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+        bottom: 0;
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        bottom: 80vh;
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
@@ -161,21 +173,16 @@
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
   <!-- Proposal Image -->
-  <img class="proposal-image" src="https://media.istockphoto.com/id/1368004428/photo/shot-of-a-young-man-proposing-to-his-girlfriend-on-the-beach.jpg?s=1024x1024&w=is&k=20&c=Kw3vE0RxOtedquqSLND3NDsystrNo_40_E3Llt64Br4=" alt="Couple Proposal">
+  <img class="proposal-image" src="https://www.example.com/couple-proposal.jpg" alt="Couple Proposal">
 
   <!-- Proposal Text -->
   <div class="proposal-text">Will You Marry Me, Rimsha?</div>
 
-  <!-- Buttons -->
-  <div class="button-container">
-    <button onclick="window.location.href='notes.html'">View Love Notes</button>
-    <button onclick="window.location.href='proposal.html'">Propose to Rimsha</button>
-  </div>
+  <!-- Yes Button with Heart -->
+  <button onclick="showFlowers()">❤️ Yes, I Will Marry You!</button>
 
-  <audio id="romanticMusic" autoplay loop style="position: fixed; bottom: 10px; left: 10px; opacity: 0.7;">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Flowers Animation -->
+  <div id="flowersContainer"></div>
 
   <!-- Floating hearts animation -->
   <script>
@@ -210,6 +217,22 @@
         rose.remove();
         ring.remove();
       }, 3000);
+    }
+
+    // Function to show flowers when the Yes button is clicked
+    function showFlowers() {
+      for (let i = 0; i < 10; i++) {
+        const flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.textContent = "💐"; // Flower emoji
+        flower.style.left = Math.random() * 90 + "vw";
+        document.getElementById("flowersContainer").appendChild(flower);
+
+        // Remove flowers after animation ends
+        setTimeout(() => {
+          flower.remove();
+        }, 3000);
+      }
     }
 
     // Triggering the animation of sending the rose and ring when the page loads
