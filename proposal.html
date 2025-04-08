@@ -3,74 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Propose to Rimsha</title>
+  <title>I Love You, Rimsha 💖</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
-      color: #333;
+      margin: 0;
+      padding: 0;
+      background: url('https://www.example.com/proposal-image.jpg') no-repeat center center fixed; /* Couple Proposal Image */
+      background-size: cover;
+      color: #fff;
       text-align: center;
-      padding: 40px;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
-      font-size: 3em;
-      color: #d6336c;
+      margin-top: 100px;
+      font-size: 4em;
+      color: #ff6f91;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
     }
 
-    .proposal {
-      position: absolute;
-      left: 50%;
-      bottom: 20%;
-      transform: translateX(-50%);
-      font-size: 3rem;
-      display: none;
-      animation: showProposal 4s ease-out forwards;
-    }
-
-    @keyframes showProposal {
-      0% {
-        opacity: 0;
-        transform: translateY(50px) scale(0.5);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    p {
+      font-size: 1.5em;
+      color: #ffe4e1;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     }
 
     button {
       background-color: #ff6f91;
       border: none;
-      padding: 12px 24px;
+      padding: 15px 30px;
       font-size: 1.2em;
       color: white;
-      border-radius: 10px;
+      border-radius: 25px;
       cursor: pointer;
-      margin-top: 30px;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
     }
 
     button:hover {
       background-color: #ff4d6d;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
     }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 3rem;
+      color: #ff6f91;
+      animation: float 10s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Button hover animation */
+    .button-container {
+      position: relative;
+      z-index: 1;
+    }
+
   </style>
 </head>
 <body>
-  <h1>Will You Marry Me, Rimsha? 💍</h1>
-  <div id="proposal" class="proposal">
-    <p>💍 Will you marry me, Rimsha? 🌹</p>
-  </div>
-  <button onclick="showProposal()">Propose to Rimsha</button>
-  <button onclick="window.location.href='index.html'">Back to Home</button>
+  <h1>I Love You, Rimsha ❤️</h1>
+  <p>To my dearest Rimsha, you mean the world to me.</p>
 
+  <div class="button-container">
+    <button onclick="window.location.href='notes.html'">View Love Notes</button>
+    <button onclick="window.location.href='proposal.html'">Propose to Rimsha</button>
+    <button onclick="window.location.href='extra.html'">Extra Info</button>
+  </div>
+
+  <audio id="romanticMusic" autoplay loop style="position: fixed; bottom: 10px; left: 10px; opacity: 0.7;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Floating hearts animation -->
   <script>
-    function showProposal() {
-      const proposalElement = document.getElementById("proposal");
-      proposalElement.style.display = "block";
+    // Floating hearts
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+      heart.style.fontSize = 1 + Math.random() * 2 + "rem";
+      document.body.appendChild(heart);
     }
   </script>
 </body>
