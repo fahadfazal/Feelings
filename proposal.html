@@ -166,6 +166,29 @@
         transform: scale(1);
       }
     }
+
+    /* Sad Emoji Animation for "No" */
+    .sad-emoji {
+      position: absolute;
+      font-size: 3rem;
+      color: #ff6f91;
+      animation: sadFloat 5s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes sadFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -181,8 +204,14 @@
   <!-- Yes Button with Heart -->
   <button onclick="showFlowers()">❤️ Yes, I Will Marry You!</button>
 
+  <!-- No Button with Sad Emoji -->
+  <button onclick="showSadEmojis()">😢 No, I'm Sorry!</button>
+
   <!-- Flowers Animation -->
   <div id="flowersContainer"></div>
+
+  <!-- Sad Emojis -->
+  <div id="sadEmojisContainer"></div>
 
   <!-- Floating hearts animation -->
   <script>
@@ -232,6 +261,22 @@
         setTimeout(() => {
           flower.remove();
         }, 3000);
+      }
+    }
+
+    // Function to show sad emojis when the No button is clicked
+    function showSadEmojis() {
+      for (let i = 0; i < 10; i++) {
+        const sadEmoji = document.createElement("div");
+        sadEmoji.classList.add("sad-emoji");
+        sadEmoji.textContent = "😢"; // Sad emoji
+        sadEmoji.style.left = Math.random() * 90 + "vw";
+        document.getElementById("sadEmojisContainer").appendChild(sadEmoji);
+
+        // Remove sad emojis after animation ends
+        setTimeout(() => {
+          sadEmoji.remove();
+        }, 5000);
       }
     }
 
