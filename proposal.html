@@ -16,11 +16,12 @@
       overflow: hidden;
       position: relative;
       background: linear-gradient(135deg, #ff7b91, #ffb3d9);
+      scroll-behavior: smooth;
     }
 
     h1 {
       margin-top: 100px;
-      font-size: 4em;
+      font-size: 4vw; /* Responsive font size based on viewport width */
       color: #fff;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       letter-spacing: 3px;
@@ -28,14 +29,13 @@
     }
 
     p {
-      font-size: 1.5em;
+      font-size: 2.5vw; /* Responsive font size */
       color: #fff;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
       margin-top: 10px;
       animation: fadeIn 4s ease-in-out;
     }
 
-    /* Proposal Image Styling */
     .proposal-image {
       margin-top: 30px;
       width: 80%;
@@ -49,12 +49,11 @@
       transform: scale(1.05);
     }
 
-    /* Button Styling */
     button {
       background-color: #ff6f91;
       border: none;
       padding: 15px 30px;
-      font-size: 1.2em;
+      font-size: 2vw; /* Responsive button size */
       color: white;
       border-radius: 50px;
       cursor: pointer;
@@ -74,7 +73,6 @@
       transform: scale(0.98);
     }
 
-    /* Floating Hearts Animation */
     .heart {
       position: absolute;
       font-size: 3rem;
@@ -97,11 +95,10 @@
       }
     }
 
-    /* Proposal Text Animation */
     .proposal-text {
-      font-size: 2.5em;
+      font-size: 2.5vw;
       font-weight: bold;
-      color: #FFD700; /* Changed the color to Gold */
+      color: #FFD700; /* Gold color */
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
       margin-top: 40px;
       opacity: 0;
@@ -119,7 +116,6 @@
       }
     }
 
-    /* Ring and Rose Animation */
     .rose, .ring {
       position: absolute;
       font-size: 2rem;
@@ -143,7 +139,6 @@
       }
     }
 
-    /* Flower Animation for "Yes" */
     .flower {
       position: absolute;
       font-size: 2rem;
@@ -167,7 +162,6 @@
       }
     }
 
-    /* Sad Emoji Animation for "No" */
     .sad-emoji {
       position: absolute;
       font-size: 3rem;
@@ -189,33 +183,63 @@
         opacity: 0;
       }
     }
+
+    /* Media Queries for smaller screens */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 6vw;
+      }
+
+      p {
+        font-size: 4vw;
+      }
+
+      button {
+        font-size: 4vw;
+        padding: 12px 24px;
+      }
+
+      .proposal-text {
+        font-size: 5vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 8vw;
+      }
+
+      p {
+        font-size: 5vw;
+      }
+
+      button {
+        font-size: 5vw;
+        padding: 10px 20px;
+      }
+
+      .proposal-text {
+        font-size: 6vw;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
-  <!-- Proposal Image -->
   <img class="proposal-image" src="https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Couple Proposal">
 
-  <!-- Proposal Text -->
   <div class="proposal-text">Will You Marry Me, Rimsha?</div>
 
-  <!-- Yes Button with Heart -->
   <button onclick="showFlowers()">❤️ Yes, I Will Marry You!</button>
 
-  <!-- No Button with Sad Emoji -->
   <button onclick="showSadEmojis()">😢 No, I'm Sorry!</button>
 
-  <!-- Flowers Animation -->
   <div id="flowersContainer"></div>
-
-  <!-- Sad Emojis -->
   <div id="sadEmojisContainer"></div>
 
-  <!-- Floating hearts animation -->
   <script>
-    // Create Floating Hearts
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -226,61 +250,44 @@
       document.body.appendChild(heart);
     }
 
-    // Send Rose and Ring Animation
-    function sendRoseAndRing() {
-      // Rose Animation
-      const rose = document.createElement("div");
-      rose.classList.add("rose");
-      rose.textContent = "🌹";
-      rose.style.left = Math.random() * 90 + "vw";
-      document.body.appendChild(rose);
-
-      // Ring Animation
-      const ring = document.createElement("div");
-      ring.classList.add("ring");
-      ring.textContent = "💍";
-      ring.style.left = Math.random() * 90 + "vw";
-      document.body.appendChild(ring);
-
-      setTimeout(() => {
-        rose.remove();
-        ring.remove();
-      }, 3000);
-    }
-
-    // Function to show flowers when the Yes button is clicked
     function showFlowers() {
       for (let i = 0; i < 10; i++) {
         const flower = document.createElement("div");
         flower.classList.add("flower");
-        flower.textContent = "💐"; // Flower emoji
+        flower.textContent = "💐";
         flower.style.left = Math.random() * 90 + "vw";
         document.getElementById("flowersContainer").appendChild(flower);
 
-        // Remove flowers after animation ends
         setTimeout(() => {
           flower.remove();
         }, 3000);
       }
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
     }
 
-    // Function to show sad emojis when the No button is clicked
     function showSadEmojis() {
       for (let i = 0; i < 10; i++) {
         const sadEmoji = document.createElement("div");
         sadEmoji.classList.add("sad-emoji");
-        sadEmoji.textContent = "😢"; // Sad emoji
+        sadEmoji.textContent = "😢";
         sadEmoji.style.left = Math.random() * 90 + "vw";
         document.getElementById("sadEmojisContainer").appendChild(sadEmoji);
 
-        // Remove sad emojis after animation ends
         setTimeout(() => {
           sadEmoji.remove();
         }, 5000);
       }
+
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
     }
 
-    // Triggering the animation of sending the rose and ring when the page loads
     window.onload = function() {
       sendRoseAndRing();
     };
