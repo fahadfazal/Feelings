@@ -9,48 +9,72 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://www.example.com/proposal-image.jpg') no-repeat center center fixed; /* Couple Proposal Image */
-      background-size: cover;
+      background: #ffefff;
       color: #fff;
       text-align: center;
       height: 100vh;
       overflow: hidden;
       position: relative;
+      background: linear-gradient(135deg, #ff7b91, #ffb3d9);
     }
 
     h1 {
       margin-top: 100px;
       font-size: 4em;
-      color: #ff6f91;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      letter-spacing: 3px;
+      animation: fadeIn 2s ease-in-out;
     }
 
     p {
       font-size: 1.5em;
-      color: #ffe4e1;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+      animation: fadeIn 3s ease-in-out;
     }
 
+    /* Proposal Image Styling */
+    .proposal-image {
+      margin-top: 30px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .proposal-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Button Styling */
     button {
       background-color: #ff6f91;
       border: none;
       padding: 15px 30px;
       font-size: 1.2em;
       color: white;
-      border-radius: 25px;
+      border-radius: 50px;
       cursor: pointer;
       margin-top: 40px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
+      transform: translateY(10px);
     }
 
     button:hover {
       background-color: #ff4d6d;
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+      transform: translateY(0px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     }
 
-    /* Floating hearts */
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Floating Hearts Animation */
     .heart {
       position: absolute;
       font-size: 3rem;
@@ -73,10 +97,22 @@
       }
     }
 
-    /* Button hover animation */
+    /* Button container */
     .button-container {
       position: relative;
       z-index: 1;
+    }
+
+    /* Animation for fade-in effect */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
   </style>
@@ -85,10 +121,12 @@
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
+  <!-- Couple Proposal Image -->
+  <img class="proposal-image" src="https://www.example.com/couple-proposal.jpg" alt="Couple Proposal">
+
   <div class="button-container">
     <button onclick="window.location.href='notes.html'">View Love Notes</button>
     <button onclick="window.location.href='proposal.html'">Propose to Rimsha</button>
-    <button onclick="window.location.href='extra.html'">Extra Info</button>
   </div>
 
   <audio id="romanticMusic" autoplay loop style="position: fixed; bottom: 10px; left: 10px; opacity: 0.7;">
@@ -98,7 +136,6 @@
 
   <!-- Floating hearts animation -->
   <script>
-    // Floating hearts
     for (let i = 0; i < 20; i++) {
       const heart = document.createElement("div");
       heart.classList.add("heart");
