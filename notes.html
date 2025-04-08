@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Notes - Rimsha</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d6336c;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+
+    button {
+      background-color: #ff6f91;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Love Notes for You, Rimsha ❤️</h1>
+  <p id="loveNote"></p>
+  <button onclick="showLoveNote()">Show Random Love Note</button>
+  <button onclick="window.location.href='index.html'">Back to Home</button>
+
+  <script>
+    const notes = [
+      "Rimsha, you light up my world like nobody else.",
+      "Every day with you is a gift I cherish.",
+      "Your love makes me a better man.",
+      "You are my favorite hello and my hardest goodbye.",
+      "I still fall for you every single day, Rimsha.",
+      "You’re my today, tomorrow, and forever.",
+      "With you, love feels effortless and endless.",
+    ];
+
+    function showLoveNote() {
+      const note = notes[Math.floor(Math.random() * notes.length)];
+      document.getElementById("loveNote").textContent = note;
+    }
+  </script>
+</body>
+</html>
