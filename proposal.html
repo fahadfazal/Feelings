@@ -62,28 +62,6 @@
       transform: scale(0.98);
     }
 
-    .sad-emoji {
-      position: absolute;
-      font-size: 3rem;
-      color: #ff6f91;
-      animation: sadFloat 5s infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes sadFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
     .proposal-text {
       font-size: 2.5vw;
       font-weight: bold;
@@ -105,29 +83,50 @@
       }
     }
 
-    /* Floating hearts */
+    /* Floating hearts with animation */
     .heart {
       position: absolute;
-      color: #ff6f81;
       font-size: 2rem;
-      animation: float 10s infinite;
       opacity: 0.6;
+      animation: float 10s infinite, rotate 5s infinite;
+      pointer-events: none; /* So hearts do not interfere with other elements */
     }
 
     @keyframes float {
       0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(100vh);
         opacity: 0;
       }
       50% {
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(-100vh);
         opacity: 0;
       }
     }
 
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Glowing effect */
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+      }
+      100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,23 +173,30 @@
       });
     }
 
-    // Function to start the floating hearts animation continuously
+    // Function to start the floating hearts animation continuously with uniqueness
     function startFloatingHearts() {
-      // Create hearts in a loop to make them float indefinitely
       setInterval(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-        heart.style.fontSize = 1 + Math.random() * 2 + "rem";
+        heart.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+        heart.style.fontSize = (1 + Math.random() * 2) + "rem"; // Random heart size
+        heart.style.color = getRandomColor(); // Random heart color
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s"; // Random speed
+
         document.body.appendChild(heart);
 
         // Remove heart after its animation is complete
         setTimeout(() => {
           heart.remove();
-        }, 10000);
+        }, 10000); // Remove after 10s to avoid excess hearts
       }, 300); // New heart every 300ms
+    }
+
+    // Function to generate random color for hearts
+    function getRandomColor() {
+      const colors = ["#ff6f91", "#ff4d6d", "#ff1493", "#ff66b2", "#ff99cc"];
+      return colors[Math.floor(Math.random() * colors.length)];
     }
   </script>
 </body>
