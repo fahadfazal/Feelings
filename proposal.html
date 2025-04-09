@@ -16,6 +16,9 @@
       position: relative;
       background-color: #ff6f91; /* A solid color background */
       scroll-behavior: smooth;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 2s ease-in-out;
     }
 
     h1 {
@@ -33,19 +36,6 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
       margin-top: 10px;
       animation: fadeIn 4s ease-in-out;
-    }
-
-    .proposal-image {
-      margin-top: 30px;
-      width: 80%;
-      max-width: 600px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      display: none; /* Hide image initially */
-    }
-
-    .proposal-image.visible {
-      display: block; /* Show image when visible class is added */
     }
 
     button {
@@ -185,9 +175,6 @@
   <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
   <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
 
-  <!-- Hidden proposal image -->
-  <img class="proposal-image" src="https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proposal Image">
-
   <!-- Comment Section -->
   <div class="comment-section" id="commentSection">
     <h3>Express Your Feelings</h3>
@@ -198,16 +185,14 @@
   <div id="sadEmojisContainer"></div>
   
   <script>
-    // Function to show the proposal image when "Yes" is clicked
+    // Function to show the proposal image as background when "Yes" is clicked
     function showYesResponse() {
-      const proposalImage = document.querySelector('.proposal-image');
-      proposalImage.classList.add('visible'); // Show the image
-      window.scrollTo({
-        top: proposalImage.offsetTop,
-        behavior: 'smooth',
-      });
-      
-      // Show the comment button and section
+      const imageUrl = "https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // The proposal image URL
+      document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
+      document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
+      document.body.style.backgroundPosition = "center"; // Center the image
+
+      // Show the comment section
       setTimeout(() => {
         const commentSection = document.getElementById("commentSection");
         commentSection.style.display = "block"; // Show the comment section
