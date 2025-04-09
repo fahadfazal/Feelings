@@ -5,42 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Extra Information</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Segoe+UI:wght@400;600&display=swap');
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
+      background: linear-gradient(135deg, #ffe1e8, #ffd8d8);
       color: #333;
+      margin: 0;
+      padding: 40px 20px;
       text-align: center;
-      padding: 40px;
     }
 
     h1 {
-      font-size: 3em;
+      font-family: 'Pacifico', cursive;
+      font-size: 3.2em;
       color: #d6336c;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-out;
     }
 
     .languages {
       margin: 40px auto;
-      max-width: 600px;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      animation: fadeInUp 1s ease-out;
     }
 
     .lang {
-      font-size: 1.2em;
-      margin: 10px 0;
+      font-size: 1.3em;
+      padding: 12px;
+      background-color: #fff0f5;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .lang:hover {
+      transform: translateY(-5px);
     }
 
     button {
       background-color: #ff6f91;
       border: none;
-      padding: 12px 24px;
+      padding: 14px 30px;
       font-size: 1.2em;
       color: white;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      margin-top: 30px;
+      margin-top: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.2s;
     }
 
     button:hover {
       background-color: #ff4d6d;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
