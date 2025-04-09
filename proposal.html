@@ -169,6 +169,11 @@
 
   <script>
     function startFloatingHearts() {
+      // Set background image when "Yes" is clicked
+      document.body.style.backgroundImage = "url('https://media.istockphoto.com/id/1390990519/photo/image-of-young-asian-bride-and-groom.jpg?s=1024x1024&w=is&k=20&c=41tBFVcU5ZrDX4_2fwYCzMwykdE0o1OyW1M-dYdJKk4=')"; // Your background image URL here
+      document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
+      document.body.style.backgroundPosition = "center"; // Center the image
+
       // Trigger floating hearts
       setInterval(() => {
         const heart = document.createElement("div");
