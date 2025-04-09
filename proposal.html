@@ -128,41 +128,6 @@
       }
     }
 
-    /* Style for the comment section */
-    .comment-section {
-      display: none;
-      margin-top: 40px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .comment-textarea {
-      width: 100%;
-      height: 150px;
-      padding: 15px;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      border: 1px solid #ff6f91;
-      margin-bottom: 10px;
-    }
-
-    .submit-comment {
-      background-color: #ff6f91;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      color: white;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .submit-comment:hover {
-      background-color: #ff4d6d;
-    }
-
   </style>
 </head>
 <body>
@@ -174,16 +139,9 @@
   <!-- Buttons for Yes and No -->
   <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
   <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
-
-  <!-- Comment Section -->
-  <div class="comment-section" id="commentSection">
-    <h3>Express Your Feelings</h3>
-    <textarea class="comment-textarea" placeholder="Share your thoughts..."></textarea>
-    <button class="submit-comment" onclick="submitComment()">Submit Comment</button>
-  </div>
   
   <div id="sadEmojisContainer"></div>
-  
+
   <script>
     // Function to show the proposal image as background when "Yes" is clicked
     function showYesResponse() {
@@ -191,12 +149,6 @@
       document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
       document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
       document.body.style.backgroundPosition = "center"; // Center the image
-
-      // Show the comment section
-      setTimeout(() => {
-        const commentSection = document.getElementById("commentSection");
-        commentSection.style.display = "block"; // Show the comment section
-      }, 2000);
 
       // Start floating hearts animation after "Yes" is clicked
       startFloatingHearts();
@@ -236,18 +188,6 @@
         setTimeout(() => {
           heart.remove();
         }, 10000);
-      }
-    }
-
-    // Function to handle comment submission
-    function submitComment() {
-      const textarea = document.querySelector(".comment-textarea");
-      const comment = textarea.value;
-      if (comment) {
-        alert("Thank you for your message! 💌"); // Show a thank you alert
-        textarea.value = ''; // Clear the textarea
-      } else {
-        alert("Please write something before submitting.");
       }
     }
   </script>
