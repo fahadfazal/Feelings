@@ -14,35 +14,38 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background-color: #ff6f91; /* A solid color background */
+      background: linear-gradient(45deg, #ff6f91, #ff4d6d, #ff1493);
+      animation: backgroundAnimate 10s ease-in-out infinite;
       scroll-behavior: smooth;
       background-size: cover;
       background-position: center;
-      transition: background-image 2s ease-in-out;
+    }
+
+    @keyframes backgroundAnimate {
+      0% { background: linear-gradient(45deg, #ff6f91, #ff4d6d); }
+      50% { background: linear-gradient(45deg, #ff1493, #ff66b2); }
+      100% { background: linear-gradient(45deg, #ff6f91, #ff4d6d); }
     }
 
     h1 {
       margin-top: 100px;
-      font-size: 4vw; /* Responsive font size based on viewport width */
+      font-size: 4vw;
       color: #fff;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-      letter-spacing: 3px;
+      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+      letter-spacing: 4px;
       animation: fadeIn 3s ease-in-out;
     }
 
-    p {
-      font-size: 2.5vw; /* Responsive font size */
-      color: #fff;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-      margin-top: 10px;
-      animation: fadeIn 4s ease-in-out;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    button {
+    .heart-button {
       background-color: #ff6f91;
       border: none;
-      padding: 15px 30px;
-      font-size: 2vw; /* Responsive button size */
+      padding: 20px 40px;
+      font-size: 2.5vw;
       color: white;
       border-radius: 50px;
       cursor: pointer;
@@ -52,151 +55,127 @@
       transform: translateY(10px);
     }
 
-    button:hover {
+    .heart-button:hover {
       background-color: #ff4d6d;
-      transform: translateY(0px) scale(1.05);
+      transform: translateY(0px) scale(1.1);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     }
 
-    button:active {
-      transform: scale(0.98);
-    }
-
-    .proposal-text {
-      font-size: 2.5vw;
-      font-weight: bold;
-      color: #FFD700; /* Gold color */
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      margin-top: 40px;
-      opacity: 0;
-      animation: textFadeIn 5s ease-in-out forwards;
-    }
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Floating hearts with animation */
     .heart {
       position: absolute;
       font-size: 2rem;
-      opacity: 0.6;
-      animation: float 10s infinite, rotate 5s infinite;
-      pointer-events: none; /* So hearts do not interfere with other elements */
+      opacity: 0.8;
+      animation: float 10s infinite, rotate 5s infinite, glow 1.5s ease-in-out infinite;
+      pointer-events: none;
     }
 
     @keyframes float {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
     }
 
     @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /* Glowing effect */
     @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-      }
-      50% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-      }
-      100% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-      }
+      0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+      100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
     }
+
+    /* Dynamic message box styles */
+    .message-box {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px 50px;
+      border-radius: 20px;
+      color: #ff1493;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      animation: fadeInMessage 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeInMessage {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .close-btn {
+      background-color: #ff1493;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background-color: #ff66b2;
+    }
+
   </style>
 </head>
 <body>
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
-
-  <div class="proposal-text">Will You Marry Me, Rimsha?</div>
-
-  <!-- Buttons for Yes and No -->
-  <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
-  <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
   
-  <div id="sadEmojisContainer"></div>
+  <button class="heart-button" onclick="startFloatingHearts()">❤️ Yes, I Will Marry You!</button>
+
+  <!-- Dynamic message box -->
+  <div class="message-box" id="messageBox">
+    <p>I'm so happy, Rimsha! 💍</p>
+    <button class="close-btn" onclick="closeMessageBox()">Close</button>
+  </div>
 
   <script>
-    // Function to show the proposal image as background when "Yes" is clicked
-    function showYesResponse() {
-      const imageUrl = "https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // The proposal image URL
-      document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
-      document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
-      document.body.style.backgroundPosition = "center"; // Center the image
-
-      // Start floating hearts animation after "Yes" is clicked
-      startFloatingHearts();
-    }
-
-    // Function to show sad emojis when "No" is clicked
-    function showNoResponse() {
-      for (let i = 0; i < 10; i++) {
-        const sadEmoji = document.createElement("div");
-        sadEmoji.classList.add("sad-emoji");
-        sadEmoji.textContent = "😢";
-        sadEmoji.style.left = Math.random() * 90 + "vw";
-        document.getElementById("sadEmojisContainer").appendChild(sadEmoji);
-
-        setTimeout(() => {
-          sadEmoji.remove();
-        }, 5000);
-      }
-
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-
-    // Function to start the floating hearts animation continuously with uniqueness
     function startFloatingHearts() {
+      // Trigger floating hearts
       setInterval(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw"; // Random horizontal position
-        heart.style.fontSize = (1 + Math.random() * 2) + "rem"; // Random heart size
-        heart.style.color = getRandomColor(); // Random heart color
-        heart.style.animationDuration = 5 + Math.random() * 5 + "s"; // Random speed
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (1 + Math.random() * 2) + "rem";
+        heart.style.color = getRandomColor();
+        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
         document.body.appendChild(heart);
 
-        // Remove heart after its animation is complete
         setTimeout(() => {
           heart.remove();
-        }, 10000); // Remove after 10s to avoid excess hearts
+        }, 10000);
       }, 300); // New heart every 300ms
+
+      // Show the dynamic message box after clicking "Yes"
+      setTimeout(() => {
+        const messageBox = document.getElementById("messageBox");
+        messageBox.style.display = "block"; // Make the message box visible
+      }, 1000); // Show message box after 1 second
+
+      // You can update the message with a personalized note if needed
+      const messageBox = document.getElementById("messageBox");
+      messageBox.querySelector("p").textContent = "You make my heart complete, Rimsha! 💖";
     }
 
-    // Function to generate random color for hearts
     function getRandomColor() {
       const colors = ["#ff6f91", "#ff4d6d", "#ff1493", "#ff66b2", "#ff99cc"];
       return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function closeMessageBox() {
+      const messageBox = document.getElementById("messageBox");
+      messageBox.style.display = "none"; // Hide the message box
     }
   </script>
 </body>
