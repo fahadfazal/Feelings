@@ -9,20 +9,23 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffe1e8, #ffd8d8);
+      background: url('https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
       margin: 0;
       padding: 40px 20px;
       text-align: center;
       overflow-x: hidden;
+      backdrop-filter: blur(3px);
     }
 
     h1 {
       font-family: 'Pacifico', cursive;
       font-size: 3.2em;
-      color: #d6336c;
+      color: #fff;
       margin-bottom: 20px;
       animation: fadeInDown 1s ease-out;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
     .languages {
@@ -37,7 +40,7 @@
     .lang {
       font-size: 1.3em;
       padding: 12px;
-      background-color: #fff0f5;
+      background-color: rgba(255, 240, 245, 0.85);
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
       transition: transform 0.3s;
@@ -75,13 +78,13 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -50px;
       font-size: 24px;
       animation: float 6s linear infinite;
       opacity: 0.7;
+      z-index: 10;
     }
 
     @keyframes float {
@@ -95,13 +98,12 @@
       }
     }
 
-    /* Popup love message */
     .popup {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #fff0f5;
+      background: rgba(255, 240, 245, 0.95);
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
@@ -126,7 +128,7 @@
     Your browser does not support the audio element.
   </audio>
 
-  <h1> For You, Rimsha ❤️</h1>
+  <h1>For You, Rimsha ❤️</h1>
 
   <div class="languages">
     <div class="lang">🇬🇧 English: I love you ❤️</div>
