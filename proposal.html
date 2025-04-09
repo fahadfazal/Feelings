@@ -137,6 +137,42 @@
         opacity: 0;
       }
     }
+
+    /* Style for the comment section */
+    .comment-section {
+      display: none;
+      margin-top: 40px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .comment-textarea {
+      width: 100%;
+      height: 150px;
+      padding: 15px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    .submit-comment {
+      background-color: #ff6f91;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-comment:hover {
+      background-color: #ff4d6d;
+    }
+
   </style>
 </head>
 <body>
@@ -152,6 +188,13 @@
   <!-- Hidden proposal image -->
   <img class="proposal-image" src="https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proposal Image">
 
+  <!-- Comment Section -->
+  <div class="comment-section" id="commentSection">
+    <h3>Express Your Feelings</h3>
+    <textarea class="comment-textarea" placeholder="Share your thoughts..."></textarea>
+    <button class="submit-comment" onclick="submitComment()">Submit Comment</button>
+  </div>
+  
   <div id="sadEmojisContainer"></div>
   
   <script>
@@ -164,6 +207,12 @@
         behavior: 'smooth',
       });
       
+      // Show the comment button and section
+      setTimeout(() => {
+        const commentSection = document.getElementById("commentSection");
+        commentSection.style.display = "block"; // Show the comment section
+      }, 2000);
+
       // Start floating hearts animation after "Yes" is clicked
       startFloatingHearts();
     }
@@ -202,6 +251,18 @@
         setTimeout(() => {
           heart.remove();
         }, 10000);
+      }
+    }
+
+    // Function to handle comment submission
+    function submitComment() {
+      const textarea = document.querySelector(".comment-textarea");
+      const comment = textarea.value;
+      if (comment) {
+        alert("Thank you for your message! 💌"); // Show a thank you alert
+        textarea.value = ''; // Clear the textarea
+      } else {
+        alert("Please write something before submitting.");
       }
     }
   </script>
