@@ -14,51 +14,35 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(45deg, #ff6f91, #ff4d6d, #ff1493);
-      animation: backgroundAnimate 10s ease-in-out infinite, fadeInPage 2s ease-out forwards;
+      background-color: #ff6f91; /* A solid color background */
       scroll-behavior: smooth;
       background-size: cover;
       background-position: center;
-    }
-
-    @keyframes backgroundAnimate {
-      0% { background: linear-gradient(45deg, #ff6f91, #ff4d6d); }
-      50% { background: linear-gradient(45deg, #ff1493, #ff66b2); }
-      100% { background: linear-gradient(45deg, #ff6f91, #ff4d6d); }
-    }
-
-    @keyframes fadeInPage {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      transition: background-image 2s ease-in-out;
     }
 
     h1 {
       margin-top: 100px;
-      font-size: 4vw;
+      font-size: 4vw; /* Responsive font size based on viewport width */
       color: #fff;
-      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-      letter-spacing: 4px;
-      animation: fadeInText 2s ease-out forwards;
-    }
-
-    @keyframes fadeInText {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+      letter-spacing: 3px;
+      animation: fadeIn 3s ease-in-out;
     }
 
     p {
-      font-size: 2vw;
+      font-size: 2.5vw; /* Responsive font size */
       color: #fff;
-      text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-      margin-top: 20px;
-      animation: fadeInText 3s ease-out forwards;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+      animation: fadeIn 4s ease-in-out;
     }
 
-    .heart-button, .sad-button {
+    button {
       background-color: #ff6f91;
       border: none;
-      padding: 20px 40px;
-      font-size: 2.5vw;
+      padding: 15px 30px;
+      font-size: 2vw; /* Responsive button size */
       color: white;
       border-radius: 50px;
       cursor: pointer;
@@ -66,38 +50,16 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
       transform: translateY(10px);
-      opacity: 0;
-      animation: fadeInButton 4s ease-out forwards;
     }
 
-    @keyframes fadeInButton {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+    button:hover {
+      background-color: #ff4d6d;
+      transform: translateY(0px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     }
 
-    .heart {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.8;
-      animation: float 10s infinite, rotate 5s infinite, glow 1.5s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(100vh); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-100vh); opacity: 0; }
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-      50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
-      100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    button:active {
+      transform: scale(0.98);
     }
 
     .sad-emoji {
@@ -109,111 +71,139 @@
     }
 
     @keyframes sadFloat {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
-    .message-box {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 30px 50px;
-      border-radius: 20px;
-      color: #ff1493;
-      font-size: 2rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    .proposal-text {
+      font-size: 2.5vw;
+      font-weight: bold;
+      color: #FFD700; /* Gold color */
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      margin-top: 40px;
       opacity: 0;
-      animation: fadeInMessage 2s ease-out forwards;
+      animation: textFadeIn 5s ease-in-out forwards;
     }
 
-    @keyframes fadeInMessage {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    @keyframes textFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .close-btn {
-      background-color: #ff1493;
-      border: none;
-      color: white;
-      padding: 10px 20px;
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff6f81;
+      font-size: 2rem;
+      animation: float 10s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Style for the comment section */
+    .comment-section {
+      display: none;
+      margin-top: 40px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .comment-textarea {
+      width: 100%;
+      height: 150px;
+      padding: 15px;
+      font-size: 1.2rem;
       border-radius: 10px;
-      font-size: 1rem;
+      border: 1px solid #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    .submit-comment {
+      background-color: #ff6f91;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 50px;
       cursor: pointer;
-      margin-top: 20px;
       transition: all 0.3s ease;
     }
 
-    .close-btn:hover {
-      background-color: #ff66b2;
+    .submit-comment:hover {
+      background-color: #ff4d6d;
     }
+
   </style>
 </head>
 <body>
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
-  <button class="heart-button" onclick="startFloatingHearts()">❤️ Yes, I Will Marry You!</button>
-  <button class="sad-button" onclick="showSadEmojis()">😢 No, I'm Sorry!</button>
+  <div class="proposal-text">Will You Marry Me, Rimsha?</div>
 
-  <!-- Dynamic message box -->
-  <div class="message-box" id="messageBox">
-    <p>I'm so happy, Rimsha! 💍</p>
-    <button class="close-btn" onclick="closeMessageBox()">Close</button>
+  <!-- Buttons for Yes and No -->
+  <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
+  <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
+
+  <!-- Comment Section -->
+  <div class="comment-section" id="commentSection">
+    <h3>Express Your Feelings</h3>
+    <textarea class="comment-textarea" placeholder="Share your thoughts..."></textarea>
+    <button class="submit-comment" onclick="submitComment()">Submit Comment</button>
   </div>
-
+  
   <div id="sadEmojisContainer"></div>
-
+  
   <script>
-    function startFloatingHearts() {
-      // Set background image when "Yes" is clicked
-      document.body.style.backgroundImage = "url('https://media.istockphoto.com/id/1390990519/photo/image-of-young-asian-bride-and-groom.jpg?s=1024x1024&w=is&k=20&c=41tBFVcU5ZrDX4_2fwYCzMwykdE0o1OyW1M-dYdJKk4=')"; // Your background image URL here
+    // Function to show the proposal image as background when "Yes" is clicked
+    function showYesResponse() {
+      const imageUrl = "https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // The proposal image URL
+      document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
       document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
       document.body.style.backgroundPosition = "center"; // Center the image
 
-      // Trigger floating hearts
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (1 + Math.random() * 2) + "rem";
-        heart.style.color = getRandomColor();
-        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 10000);
-      }, 300); // New heart every 300ms
-
-      // Show the dynamic message box after clicking "Yes"
+      // Show the comment section
       setTimeout(() => {
-        const messageBox = document.getElementById("messageBox");
-        messageBox.style.display = "block"; // Make the message box visible
-      }, 1000); // Show message box after 1 second
+        const commentSection = document.getElementById("commentSection");
+        commentSection.style.display = "block"; // Show the comment section
+      }, 2000);
 
-      // You can update the message with a personalized note if needed
-      const messageBox = document.getElementById("messageBox");
-      messageBox.querySelector("p").textContent = "You make my heart complete, Rimsha! 💖";
+      // Start floating hearts animation after "Yes" is clicked
+      startFloatingHearts();
     }
 
-    function getRandomColor() {
-      const colors = ["#ff6f91", "#ff4d6d", "#ff1493", "#ff66b2", "#ff99cc"];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function closeMessageBox() {
-      const messageBox = document.getElementById("messageBox");
-      messageBox.style.display = "none"; // Hide the message box
-    }
-
-    function showSadEmojis() {
-      // Generate sad emojis when "No" is clicked
+    // Function to show sad emojis when "No" is clicked
+    function showNoResponse() {
       for (let i = 0; i < 10; i++) {
         const sadEmoji = document.createElement("div");
         sadEmoji.classList.add("sad-emoji");
@@ -226,12 +216,41 @@
         }, 5000);
       }
 
-      // Smooth scroll to the bottom of the page
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth',
       });
     }
+
+    // Function to start the floating hearts animation
+    function startFloatingHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+        heart.style.fontSize = 1 + Math.random() * 2 + "rem";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 10000);
+      }
+    }
+
+    // Function to handle comment submission
+    function submitComment() {
+      const textarea = document.querySelector(".comment-textarea");
+      const comment = textarea.value;
+      if (comment) {
+        alert("Thank you for your message! 💌"); // Show a thank you alert
+        textarea.value = ''; // Clear the textarea
+      } else {
+        alert("Please write something before submitting.");
+      }
+    }
   </script>
 </body>
 </html>
+
