@@ -7,15 +7,18 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffd1dc, #ffe4e1);
+      background: url('https://plus.unsplash.com/premium_photo-1673721701655-13d009f32c57?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
       text-align: center;
       padding: 40px;
+      backdrop-filter: blur(5px); /* Optional: adds a slight blur to the background */
     }
 
     h1 {
       font-size: 3em;
-      color: #d6336c;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
     }
 
     .note {
@@ -23,6 +26,8 @@
       margin-top: 20px;
       opacity: 0;
       transition: opacity 0.8s ease-in;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .note.visible {
