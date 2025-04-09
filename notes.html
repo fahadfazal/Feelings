@@ -28,11 +28,21 @@
     .note.visible {
       opacity: 1;
     }
+
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Love Notes for You, Rimsha ❤️</h1>
   <div id="notesContainer"></div>
+
+  <!-- Romantic Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <script>
     const notes = [
@@ -54,9 +64,9 @@
         p.className = "note";
         p.textContent = notes[index];
         container.appendChild(p);
-        setTimeout(() => p.classList.add("visible"), 100); // fade-in effect
+        setTimeout(() => p.classList.add("visible"), 100);
         index++;
-        setTimeout(showNextNote, Math.floor(Math.random() * 1000 + 1000)); // 1–2 seconds
+        setTimeout(showNextNote, Math.floor(Math.random() * 1000 + 1000)); // 1–2s
       }
     }
 
