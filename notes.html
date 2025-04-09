@@ -20,29 +20,14 @@
 
     p {
       font-size: 1.5em;
-    }
-
-    button {
-      background-color: #ff6f91;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1.2em;
-      color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 30px;
-    }
-
-    button:hover {
-      background-color: #ff4d6d;
+      margin-top: 50px;
+      min-height: 3em;
     }
   </style>
 </head>
 <body>
   <h1>Love Notes for You, Rimsha ❤️</h1>
   <p id="loveNote" aria-live="polite"></p>
-  <button onclick="showLoveNote()">Show Random Love Note</button>
-  <button onclick="window.location.href='index.html'">Back to Home</button>
 
   <script>
     const notes = [
@@ -55,10 +40,18 @@
       "With you, love feels effortless and endless.",
     ];
 
-    function showLoveNote() {
-      const note = notes[Math.floor(Math.random() * notes.length)];
-      document.getElementById("loveNote").textContent = note;
+    let index = 0;
+
+    function showNextNote() {
+      document.getElementById("loveNote").textContent = notes[index];
+      index = (index + 1) % notes.length;
+
+      const nextInterval = Math.floor(Math.random() * 11 + 10) * 1000; // 10 to 20 seconds
+      setTimeout(showNextNote, nextInterval);
     }
+
+    // Start the cycle
+    showNextNote();
   </script>
 </body>
 </html>
