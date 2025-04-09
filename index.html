@@ -112,7 +112,38 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 5 + Math.random() * 5 + "s";
       heart.style.fontSize = 1 + Math.random() * 2 + "rem";
-      document.body.appendChild(heart);
+     document.body.appendChild(heart);
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - I Love You, Rimsha 💖</title>
+  <style>
+    /* Your existing styles */
+  </style>
+</head>
+<body>
+  <h1>Welcome to Our Special Moment</h1>
+  
+  <div id="displayComment">
+    <!-- This is where the comment will be displayed -->
+  </div>
+
+  <script>
+    // Retrieve the comment from localStorage
+    const userComment = localStorage.getItem('userComment');
+    if (userComment) {
+      const displayCommentDiv = document.getElementById('displayComment');
+      displayCommentDiv.innerHTML = `<p><strong>Rimsha's Message:</strong> ${userComment}</p>`;
+    } else {
+      const displayCommentDiv = document.getElementById('displayComment');
+      displayCommentDiv.innerHTML = "<p>No comment submitted yet.</p>";
+    }
+  </script>
+</body>
+</html>
+
     }
   </script>
 </body>
