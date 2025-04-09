@@ -97,27 +97,6 @@
         opacity: 0;
       }
     }
-
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 240, 245, 0.95);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      font-size: 1.5em;
-      color: #d6336c;
-      z-index: 999;
-      display: none;
-      animation: popupFade 1s ease forwards;
-    }
-
-    @keyframes popupFade {
-      0% { opacity: 0; transform: translate(-50%, -60%); }
-      100% { opacity: 1; transform: translate(-50%, -50%); }
-    }
   </style>
 </head>
 <body>
@@ -144,11 +123,6 @@
 
   <button onclick="window.location.href='index.html'">🏠 Back to Home</button>
 
-  <!-- Love Message Popup -->
-  <div class="popup" id="lovePopup">
-    🌟 You’re the reason behind every smile, Rimsha ❤️
-  </div>
-
   <!-- Floating Hearts -->
   <script>
     function createHeart() {
@@ -165,13 +139,6 @@
     }
 
     setInterval(createHeart, 500);
-
-    // Show love message after 2 seconds
-    window.onload = function() {
-      setTimeout(() => {
-        document.getElementById("lovePopup").style.display = "block";
-      }, 2000);
-    }
   </script>
 </body>
 </html>
