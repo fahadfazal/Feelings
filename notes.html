@@ -18,16 +18,21 @@
       color: #d6336c;
     }
 
-    p {
+    .note {
       font-size: 1.5em;
-      margin-top: 50px;
-      min-height: 3em;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in;
+    }
+
+    .note.visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
   <h1>Love Notes for You, Rimsha ❤️</h1>
-  <p id="loveNote" aria-live="polite"></p>
+  <div id="notesContainer"></div>
 
   <script>
     const notes = [
@@ -40,17 +45,21 @@
       "With you, love feels effortless and endless.",
     ];
 
+    const container = document.getElementById("notesContainer");
     let index = 0;
 
     function showNextNote() {
-      document.getElementById("loveNote").textContent = notes[index];
-      index = (index + 1) % notes.length;
-
-      const nextInterval = Math.floor(Math.random() * 11 + 10) * 1000; // 10 to 20 seconds
-      setTimeout(showNextNote, nextInterval);
+      if (index < notes.length) {
+        const p = document.createElement("p");
+        p.className = "note";
+        p.textContent = notes[index];
+        container.appendChild(p);
+        setTimeout(() => p.classList.add("visible"), 100); // fade-in effect
+        index++;
+        setTimeout(showNextNote, Math.floor(Math.random() * 1000 + 1000)); // 1–2 seconds
+      }
     }
 
-    // Start the cycle
     showNextNote();
   </script>
 </body>
