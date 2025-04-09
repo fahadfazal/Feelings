@@ -15,122 +15,38 @@
       overflow: hidden;
       position: relative;
       background-color: #ff6f91; /* A solid color background */
-      scroll-behavior: smooth;
-      background-size: cover;
-      background-position: center;
-      transition: background-image 2s ease-in-out;
     }
 
     h1 {
       margin-top: 100px;
-      font-size: 4vw; /* Responsive font size based on viewport width */
+      font-size: 4vw;
       color: #fff;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-      letter-spacing: 3px;
-      animation: fadeIn 3s ease-in-out;
     }
 
     p {
-      font-size: 2.5vw; /* Responsive font size */
+      font-size: 2.5vw;
       color: #fff;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
       margin-top: 10px;
-      animation: fadeIn 4s ease-in-out;
     }
 
     button {
       background-color: #ff6f91;
       border: none;
       padding: 15px 30px;
-      font-size: 2vw; /* Responsive button size */
+      font-size: 2vw;
       color: white;
       border-radius: 50px;
       cursor: pointer;
       margin-top: 40px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-      transform: translateY(10px);
     }
 
     button:hover {
       background-color: #ff4d6d;
-      transform: translateY(0px) scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     }
 
-    button:active {
-      transform: scale(0.98);
-    }
-
-    .sad-emoji {
-      position: absolute;
-      font-size: 3rem;
-      color: #ff6f91;
-      animation: sadFloat 5s infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes sadFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .proposal-text {
-      font-size: 2.5vw;
-      font-weight: bold;
-      color: #FFD700; /* Gold color */
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      margin-top: 40px;
-      opacity: 0;
-      animation: textFadeIn 5s ease-in-out forwards;
-    }
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      color: #ff6f81;
-      font-size: 2rem;
-      animation: float 10s infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Style for the comment section */
     .comment-section {
-      display: none;
       margin-top: 40px;
       text-align: left;
       max-width: 600px;
@@ -155,22 +71,6 @@
       font-size: 1.2rem;
       color: white;
       border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .submit-comment:hover {
-      background-color: #ff4d6d;
-    }
-
-    /* Show the stored comment on the homepage */
-    .comment-display {
-      font-size: 1.5rem;
-      color: #FFD700;
-      margin-top: 20px;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
     }
   </style>
 </head>
@@ -178,99 +78,32 @@
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
-  <div class="proposal-text">Will You Marry Me, Rimsha?</div>
-
-  <!-- Buttons for Yes and No -->
-  <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
-  <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
-
-  <!-- Comment Section -->
-  <div class="comment-section" id="commentSection">
+  <div class="comment-section">
     <h3>Express Your Feelings</h3>
     <textarea class="comment-textarea" placeholder="Share your thoughts..."></textarea>
     <button class="submit-comment" onclick="submitComment()">Submit Comment</button>
   </div>
-  
-  <div id="sadEmojisContainer"></div>
 
   <script>
-    // Function to show the proposal image as background when "Yes" is clicked
-    function showYesResponse() {
-      const imageUrl = "https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // The proposal image URL
-      document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
-      document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
-      document.body.style.backgroundPosition = "center"; // Center the image
-
-      // Show the comment section
-      setTimeout(() => {
-        const commentSection = document.getElementById("commentSection");
-        commentSection.style.display = "block"; // Show the comment section
-      }, 2000);
-
-      // Start floating hearts animation after "Yes" is clicked
-      startFloatingHearts();
-    }
-
-    // Function to show sad emojis when "No" is clicked
-    function showNoResponse() {
-      for (let i = 0; i < 10; i++) {
-        const sadEmoji = document.createElement("div");
-        sadEmoji.classList.add("sad-emoji");
-        sadEmoji.textContent = "😢";
-        sadEmoji.style.left = Math.random() * 90 + "vw";
-        document.getElementById("sadEmojisContainer").appendChild(sadEmoji);
-
-        setTimeout(() => {
-          sadEmoji.remove();
-        }, 5000);
-      }
-
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-
-    // Function to start the floating hearts animation
-    function startFloatingHearts() {
-      for (let i = 0; i < 30; i++) {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-        heart.style.fontSize = 1 + Math.random() * 2 + "rem";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 10000);
-      }
-    }
-
     // Function to handle comment submission
     function submitComment() {
       const textarea = document.querySelector(".comment-textarea");
       const comment = textarea.value;
       if (comment) {
-        alert("Thank you for your message! 💌"); // Show a thank you alert
-        localStorage.setItem('userComment', comment); // Store the comment in localStorage
-        textarea.value = ''; // Clear the textarea
+        // Save the comment to localStorage
+        localStorage.setItem('userComment', comment);
+
+        // Show a thank you message and redirect after 3 seconds
+        alert("Thank you for your message! 💌");
+
+        // Wait 3 seconds and then redirect to the homepage
+        setTimeout(() => {
+          window.location.href = "home.html";  // Redirect to the homepage
+        }, 3000);  // 3000ms = 3 seconds
       } else {
         alert("Please write something before submitting.");
       }
     }
-
-    // On page load, display the comment from localStorage (if any)
-    window.onload = function() {
-      const savedComment = localStorage.getItem('userComment');
-      if (savedComment) {
-        const commentDisplay = document.createElement("div");
-        commentDisplay.classList.add("comment-display");
-        commentDisplay.textContent = savedComment;
-        document.body.appendChild(commentDisplay); // Display saved comment on the page
-      }
-    };
   </script>
 </body>
 </html>
