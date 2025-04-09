@@ -14,6 +14,7 @@
       margin: 0;
       padding: 40px 20px;
       text-align: center;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -65,42 +66,111 @@
     }
 
     @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
       0% {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
       }
       100% {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
       }
+    }
+
+    /* Popup love message */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      font-size: 1.5em;
+      color: #d6336c;
+      z-index: 999;
+      display: none;
+      animation: popupFade 1s ease forwards;
+    }
+
+    @keyframes popupFade {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      100% { opacity: 1; transform: translate(-50%, -50%); }
     }
   </style>
 </head>
 <body>
-  <h1>Extra Info for You, Rimsha 💖🥰</h1>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>Extra Info for You, Rimsha ❤️</h1>
+
   <div class="languages">
     <div class="lang">🇬🇧 English: I love you ❤️</div>
     <div class="lang">🇫🇷 French: Je t’aime 💕</div>
-    <div class="lang">🇪🇸 Spanish: Te amo 💘</div>
-    <div class="lang">🇩🇪 German: Ich liebe dich 💖</div>
-    <div class="lang">🇯🇵 Japanese: 愛してる (Aishiteru) 💗</div>
-    <div class="lang">🇮🇳 Hindi: मैं तुमसे प्यार करता हूँ (Main tumse pyaar karta hoon) 💓</div>
-    <div class="lang">🇸🇦 Arabic: أحبك (Uhibbuki) 💞</div>
-    <div class="lang">🇮🇹 Italian: Ti amo 💝</div>
-    <div class="lang">🇰🇷 Korean: 사랑해 (Saranghae) 💜</div>
-    <div class="lang">🇵🇰 Urdu: میں تم سے محبت کرتا ہوں (Main tum se mohabbat karta hoon) ❤️‍🔥</div>
+    <div class="lang">🇪🇸 Spanish: Te amo 💖</div>
+    <div class="lang">🇩🇪 German: Ich liebe dich 💓</div>
+    <div class="lang">🇯🇵 Japanese: 愛してる (Aishiteru) 🌸</div>
+    <div class="lang">🇮🇳 Hindi: मैं तुमसे प्यार करता हूँ 🪔</div>
+    <div class="lang">🇸🇦 Arabic: أحبك (Uhibbuki) 🌹</div>
+    <div class="lang">🇮🇹 Italian: Ti amo 💘</div>
+    <div class="lang">🇰🇷 Korean: 사랑해 (Saranghae) 💌</div>
+    <div class="lang">🇵🇰 Urdu: میں تم سے محبت کرتا ہوں 🌙</div>
   </div>
-  <button onclick="window.location.href='index.html'">🔙 Back to Home</button>
+
+  <button onclick="window.location.href='index.html'">🏠 Back to Home</button>
+
+  <!-- Love Message Popup -->
+  <div class="popup" id="lovePopup">
+    🌟 You’re the reason behind every smile, Rimsha ❤️
+  </div>
+
+  <!-- Floating Hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.innerText = "💖";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 500);
+
+    // Show love message after 2 seconds
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById("lovePopup").style.display = "block";
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
