@@ -7,9 +7,9 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://plus.unsplash.com/premium_photo-1674068279574-92b0a56e660e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background: url('https://images.unsplash.com/photo-1532613940-b48960568d78?q=80&w=1374&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
       background-size: cover;
-      color: #333;
+      color: #f0f0f0;
       text-align: center;
       padding: 40px;
       backdrop-filter: blur(5px); /* Optional: adds a slight blur to the background */
@@ -34,6 +34,26 @@
       opacity: 1;
     }
 
+    button {
+      background-color: #ff6f91;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      display: none;
+    }
+
+    button:hover {
+      background-color: #ff4d6d;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    }
+
     audio {
       display: none;
     }
@@ -49,6 +69,8 @@
     Your browser does not support the audio element.
   </audio>
 
+  <button id="homeButton" onclick="window.location.href='index.html'">🏠 Go to Home</button>
+
   <script>
     const notes = [
       "Rimsha, you light up my world like nobody else.",
@@ -61,6 +83,7 @@
     ];
 
     const container = document.getElementById("notesContainer");
+    const homeButton = document.getElementById("homeButton");
     let index = 0;
 
     function showNextNote() {
@@ -72,6 +95,9 @@
         setTimeout(() => p.classList.add("visible"), 100);
         index++;
         setTimeout(showNextNote, Math.floor(Math.random() * 1000 + 1000)); // 1–2s
+      } else {
+        // Show home button after all notes are displayed
+        homeButton.style.display = "block";
       }
     }
 
