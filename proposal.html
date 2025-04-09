@@ -174,9 +174,10 @@
       });
     }
 
-    // Function to start the floating hearts animation
+    // Function to start the floating hearts animation continuously
     function startFloatingHearts() {
-      for (let i = 0; i < 30; i++) {
+      // Create hearts in a loop to make them float indefinitely
+      setInterval(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.textContent = "❤️";
@@ -185,10 +186,11 @@
         heart.style.fontSize = 1 + Math.random() * 2 + "rem";
         document.body.appendChild(heart);
 
+        // Remove heart after its animation is complete
         setTimeout(() => {
           heart.remove();
         }, 10000);
-      }
+      }, 300); // New heart every 300ms
     }
   </script>
 </body>
