@@ -62,73 +62,6 @@
       transform: scale(0.98);
     }
 
-    .sad-emoji {
-      position: absolute;
-      font-size: 3rem;
-      color: #ff6f91;
-      animation: sadFloat 5s infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes sadFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .proposal-text {
-      font-size: 2.5vw;
-      font-weight: bold;
-      color: #FFD700; /* Gold color */
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      margin-top: 40px;
-      opacity: 0;
-      animation: textFadeIn 5s ease-in-out forwards;
-    }
-
-    @keyframes textFadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      color: #ff6f81;
-      font-size: 2rem;
-      animation: float 10s infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Style for the comment section */
     .comment-section {
       display: none;
       margin-top: 40px;
@@ -163,92 +96,88 @@
       background-color: #ff4d6d;
     }
 
+    .flowers {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      animation: flowerFloat 10s infinite;
+    }
+
+    @keyframes flowerFloat {
+      0% { transform: translate(-50%, -50%) translateY(0) rotate(0deg); }
+      50% { transform: translate(-50%, -50%) translateY(-200px) rotate(180deg); }
+      100% { transform: translate(-50%, -50%) translateY(0) rotate(360deg); }
+    }
+
+    .home-button {
+      display: none;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ff6f91;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .home-button:hover {
+      background-color: #ff4d6d;
+    }
   </style>
 </head>
 <body>
   <h1>I Love You, Rimsha ❤️</h1>
   <p>To my dearest Rimsha, you mean the world to me.</p>
 
-  <div class="proposal-text">Will You Marry Me, Rimsha?</div>
-
-  <!-- Buttons for Yes and No -->
-  <button onclick="showYesResponse()">❤️ Yes, I Will Marry You!</button>
-  <button onclick="showNoResponse()">😢 No, I'm Sorry!</button>
-
-  <!-- Comment Section -->
   <div class="comment-section" id="commentSection">
     <h3>Express Your Feelings</h3>
     <textarea class="comment-textarea" placeholder="Share your thoughts..."></textarea>
     <button class="submit-comment" onclick="submitComment()">Submit Comment</button>
   </div>
-  
-  <div id="sadEmojisContainer"></div>
-  
+
+  <div class="flowers" id="flowers"></div>
+
+  <div id="commentDisplay"></div>
+
+  <button class="home-button" id="homeButton" onclick="goHome()">Home</button>
+
   <script>
-    // Function to show the proposal image as background when "Yes" is clicked
-    function showYesResponse() {
-      const imageUrl = "https://images.unsplash.com/photo-1650919997970-7f512398bb66?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // The proposal image URL
-      document.body.style.backgroundImage = `url(${imageUrl})`; // Set the image as background
-      document.body.style.backgroundSize = "cover"; // Make the image cover the entire screen
-      document.body.style.backgroundPosition = "center"; // Center the image
-
-      // Show the comment section
-      setTimeout(() => {
-        const commentSection = document.getElementById("commentSection");
-        commentSection.style.display = "block"; // Show the comment section
-      }, 2000);
-
-      // Start floating hearts animation after "Yes" is clicked
-      startFloatingHearts();
-    }
-
-    // Function to show sad emojis when "No" is clicked
-    function showNoResponse() {
-      for (let i = 0; i < 10; i++) {
-        const sadEmoji = document.createElement("div");
-        sadEmoji.classList.add("sad-emoji");
-        sadEmoji.textContent = "😢";
-        sadEmoji.style.left = Math.random() * 90 + "vw";
-        document.getElementById("sadEmojisContainer").appendChild(sadEmoji);
-
-        setTimeout(() => {
-          sadEmoji.remove();
-        }, 5000);
-      }
-
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-
-    // Function to start the floating hearts animation
-    function startFloatingHearts() {
-      for (let i = 0; i < 30; i++) {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.textContent = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-        heart.style.fontSize = 1 + Math.random() * 2 + "rem";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 10000);
-      }
-    }
-
     // Function to handle comment submission
     function submitComment() {
       const textarea = document.querySelector(".comment-textarea");
       const comment = textarea.value;
       if (comment) {
-        alert("Thank you for your message! 💌"); // Show a thank you alert
-        textarea.value = ''; // Clear the textarea
+        // Show the comment with flowers
+        displayCommentWithFlowers(comment);
+
+        // Clear the textarea
+        textarea.value = '';
+
+        // Show the "Home" button after 3 seconds
+        setTimeout(() => {
+          document.getElementById('homeButton').style.display = 'block';
+        }, 3000);
       } else {
         alert("Please write something before submitting.");
       }
+    }
+
+    // Function to display the comment and animate flowers
+    function displayCommentWithFlowers(comment) {
+      const commentDisplay = document.getElementById('commentDisplay');
+      commentDisplay.innerHTML = `<p><strong>Your Comment:</strong> ${comment}</p>`;
+
+      // Add flowers to the page
+      const flowers = document.getElementById('flowers');
+      flowers.innerHTML = '🌸 🌸 🌸 🌸 🌸';
+    }
+
+    // Function to go back to the homepage
+    function goHome() {
+      window.location.href = "home.html";  // Redirect to the homepage
     }
   </script>
 </body>
